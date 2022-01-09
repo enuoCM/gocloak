@@ -1247,11 +1247,11 @@ type CredentialRepresentation struct {
 }
 
 type Users struct {
-	Current             *int    `json:"current,string,omitempty"`
-	Size                *int    `json:"size,string,omitempty"`
-	Total               *int    `json:"total,string,omitempty"`
+	Current             *int    `json:"current,omitempty"`
+	Size                *int    `json:"size,omitempty"`
+	Total               *int    `json:"total,omitempty"`
 	Orders              *string `json:"orders,omitempty"`
-	Pages               *int    `json:"pages,string,omitempty"`
+	Pages               *int    `json:"pages,omitempty"`
 	Records             []*User `json:"records,omitempty"`
 }
 
@@ -1347,3 +1347,4 @@ func (v *GetUserPermissionParams) String() string                   { return pre
 func (v *ResourcePolicyRepresentation) String() string              { return prettyStringStruct(v) }
 func (v *GetResourcePoliciesParams) String() string                 { return prettyStringStruct(v) }
 func (v *CredentialRepresentation) String() string                  { return prettyStringStruct(v) }
+func (v *Users) String() string                                     { return prettyStringStruct(v) }
