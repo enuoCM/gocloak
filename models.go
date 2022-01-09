@@ -169,6 +169,8 @@ type RetrospecTokenResult struct {
 type User struct {
 	ID                         *string                     `json:"id,omitempty"`
 	CreatedTimestamp           *int64                      `json:"createdTimestamp,omitempty"`
+	UpdatedTimestamp           *int64                      `json:"updatedTimestamp,omitempty"`
+	ValidTo                    *int64                      `json:"validTo,omitempty"`
 	Username                   *string                     `json:"username,omitempty"`
 	Enabled                    *bool                       `json:"enabled,omitempty"`
 	Totp                       *bool                       `json:"totp,omitempty"`
@@ -176,6 +178,7 @@ type User struct {
 	FirstName                  *string                     `json:"firstName,omitempty"`
 	LastName                   *string                     `json:"lastName,omitempty"`
 	Email                      *string                     `json:"email,omitempty"`
+	Phone                      *string                     `json:"phone,omitempty"`
 	FederationLink             *string                     `json:"federationLink,omitempty"`
 	Attributes                 *map[string][]string        `json:"attributes,omitempty"`
 	DisableableCredentialTypes *[]interface{}              `json:"disableableCredentialTypes,omitempty"`
@@ -273,6 +276,15 @@ type GetUsersParams struct {
 	Max                 *int    `json:"max,string,omitempty"`
 	Search              *string `json:"search,omitempty"`
 	Username            *string `json:"username,omitempty"`
+	Phone               *string `json:"phone,omitempty"`
+	EmailVerified       *bool   `json:"emailVerified,string,omitempty"`
+	AttrsOr             *bool   `json:"attrsOr,string,omitempty"`
+	Attrs               *string `json:"attrs,omitempty"`
+	CreatedTimeRange    *string `json:"createdTimeRange,omitempty"`
+	UpdatedTimeRange    *string `json:"updatedTimeRange,omitempty"`
+	Orders              *string `json:"orders,omitempty"`
+	Current             *int    `json:"current,string,omitempty"`
+	Size                *int    `json:"size,string,omitempty"`
 }
 
 // ExecuteActionsEmail represents parameters for executing action emails
@@ -1232,6 +1244,15 @@ type CredentialRepresentation struct {
 	Priority       *int32  `json:"priority,omitempty"`
 	SecretData     *string `json:"secretData,omitempty"`
 	UserLabel      *string `json:"userLabel,omitempty"`
+}
+
+type Users struct {
+	Current             *int    `json:"current,string,omitempty"`
+	Size                *int    `json:"size,string,omitempty"`
+	Total               *int    `json:"total,string,omitempty"`
+	Orders              *string `json:"orders,omitempty"`
+	Pages               *int    `json:"pages,string,omitempty"`
+	Records             []*User `json:"records,omitempty"`
 }
 
 // prettyStringStruct returns struct formatted into pretty string

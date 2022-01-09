@@ -325,8 +325,10 @@ type GoCloak interface {
 	GetUserByID(ctx context.Context, accessToken, realm, userID string) (*User, error)
 	// GetUser count returns the userCount of the given realm
 	GetUserCount(ctx context.Context, accessToken, realm string, params GetUsersParams) (int, error)
-	// GetUsers gets all users of the given realm
+	// GetUsers gets users of the given realm, max size is 100
 	GetUsers(ctx context.Context, accessToken, realm string, params GetUsersParams) ([]*User, error)
+	// GetUsers gets page users of the given realm
+	GetPageUsers(ctx context.Context, token, realm string, params GetUsersParams) (*Users, error)
 	// GetUserGroups gets the groups of the given user
 	GetUserGroups(ctx context.Context, accessToken, realm, userID string, params GetGroupsParams) ([]*Group, error)
 	// GetUsersByRoleName returns all users have a given role

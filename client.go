@@ -2319,6 +2319,27 @@ func (client *gocloak) GetUsers(ctx context.Context, token, realm string, params
 	return result, nil
 }
 
+func (client *gocloak) GetPageUsers(ctx context.Context, token, realm string, params GetUsersParams) (*Users, error) {
+	const errMessage = "could not get users"
+
+	var result Users
+	queryParams, err := GetQueryParams(params)
+	if err != nil {
+		return nil, errors.Wrap(err, errMessage)
+	}
+
+	resp, err := client.getRequestWithBearerAuth(ctx, token).
+		SetResult(&result).
+		SetQueryParams(queryParams).
+		Get(client.getAdminRealmURL(realm, "users", "pages"))
+
+	if err := checkForError(resp, err, errMessage); err != nil {
+		return nil, err
+	}
+
+	return &result, nil
+}
+
 // GetUsersByRoleName returns all users have a given role
 func (client *gocloak) GetUsersByRoleName(ctx context.Context, token, realm, roleName string) ([]*User, error) {
 	const errMessage = "could not get users by role name"
