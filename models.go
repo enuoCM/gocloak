@@ -178,7 +178,7 @@ type User struct {
 	FirstName                  *string                     `json:"firstName,omitempty"`
 	LastName                   *string                     `json:"lastName,omitempty"`
 	Email                      *string                     `json:"email,omitempty"`
-	Phone                      *string                     `json:"phone,omitempty"`
+	MobileNumber               *string                     `json:"mobileNumber,omitempty"`
 	FederationLink             *string                     `json:"federationLink,omitempty"`
 	Attributes                 *map[string][]string        `json:"attributes,omitempty"`
 	DisableableCredentialTypes *[]interface{}              `json:"disableableCredentialTypes,omitempty"`
